@@ -124,12 +124,11 @@
     ================================================== -->
    <section id="hero" class="s-hero target-section">
     <div class="s-hero__bg-container">
-        <video autoplay loop muted class="s-hero__bg-video" data-rellax-speed="-7">
+        <video id="myVideo" autoplay muted class="s-hero__bg-video" data-rellax-speed="-7">
             <source src="images/메인영상.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
-  
 
     <a href="#about" class="s-hero__scroll">
         <span class="scroll-text"></span>
@@ -712,6 +711,16 @@
         var iframe = document.getElementById("iframe");
         iframe.src = ""; // 끌 때 iframe 초기화 (선택사항)
       }
+
+       const video = document.getElementById('myVideo');
+    video.loop = false; // 기본 반복 기능 끄기
+
+    video.addEventListener('ended', () => {
+        setTimeout(() => {
+            video.currentTime = 0; // 비디오를 처음으로 되돌림
+            video.play();          // 비디오 다시 재생
+        }, 2000); // 3초 지연 (밀리초 단위: 3000ms = 3초)
+    });
     </script>
   </body>
 </html>
